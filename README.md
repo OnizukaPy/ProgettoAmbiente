@@ -17,7 +17,28 @@ Utilizzare le risorse web della pagina di [consultazione di dati climatidi della
 
 4. FrontEnd che consulta il servizio REST/o richiama direttamente il BE, e visualizza i dati in una tabella. Può essere fatto con un framework ASPNET. La pagina web deve essere in grado di visualizzare i dati, scegliendo la grandezza fisica da voler monitorare, mostrando i dati su base mensile. Ogni giorno del mese può essere poi cliccato per visualizzare i dati orari della singola giornata. La pagina web deve essere in grado di visualizzare i dati in un grafico.
 
+```mermaid
+graph LR
+
+    id1[File di input]
+    id2[File CSV]
+    id3[Database]
+    id4[BE]
+    id5[FE]
+
+    START --> |Download| id1
+    id1 --> |Esporta| id2
+    id3 --> |Legge| id2
+    id4 --> |Analizza| id3  
+    id4 --> |Restituisci| id5
+    id5 --> |Visualizza| END
+```
+
 ## Linguaggi disponmibili
 
 - C#
 - Python
+
+# C#
+
+La parte di C# si occuperà della manipolazione del file di input, per formattarlo e generare un file csv conclusivo da poter poi importare nel Database.
